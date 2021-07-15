@@ -1,0 +1,1 @@
+https://github.com/apache/nifi/blob/rel/nifi-1.13.2/nifi-nar-bundles/nifi-elasticsearch-bundle/nifi-elasticsearch-processors/src/main/java/org/apache/nifi/processors/elasticsearch/PutElasticsearchHttp.java
