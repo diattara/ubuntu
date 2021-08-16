@@ -1,0 +1,20 @@
+sed -i 'N;s/<artifact>nifi-elasticsearch-nar<\/artifact>.*<version>1.12.1<\/version>/<artifact>nifi-elasticsearch-nar<\/artifact><version>1.13.1<\/version>/g' flow.xml
+
+
+sed -i 'N;N;s/<artifact>nifi-elasticsearch-nar<\/artifact>.*<group>org.apache.nifi<\/group>.*<version>1.12.1<\/version>/<artifact>nifi-elasticsearch-nar<\/artifact><group>org.apache.nifi<\/group><version>1.13.1<\/version>/g' flow.xml
+
+
+Step1 Get  the template id
+
+http://localhost:8090/nifi-api/flow/templates
+
+Step2 templae to  post
+
+{
+    "originX": 2.0,
+    "originY": 3.0,
+    "templateId":"c82c6f63-937d-4898-8fd3-421e089087d8"
+}
+
+Step3
+http://localhost:8090/nifi-api/process-groups/2b159b7e-017b-1000-d5c9-5d385deafb5d/template-instance
