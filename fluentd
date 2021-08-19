@@ -1,0 +1,32 @@
+## Define input sources
+<source>
+  @type tail
+  path /home/dtldev03/test/foo.log
+  pos_file /home/dtldev03/test/foo.log.pos
+  tag 
+  keep_time_key true
+  with_priority true
+  format json
+</source>
+
+## Match tag=syslog.message
+## Determine the output destinations
+<match my_tag>
+  @type kafka_buffered
+  brokers dlkprdap005.fr.world.socgen:9093,dlkprdap006.fr.world.socgen:9093,dlkprdap007.fr.world.socgen:9093
+  buffer_type file
+  buffer_path /home/dtldev03/test_log/my_logs.buffer
+  flush_interval 3s
+  default_topic maas_log_test_2.0
+
+  #data type settings
+  output_data_type json
+  compression_codec gzip
+
+  #producer settings
+  max_send_retries 1
+  required_acks -1
+
+  ssl_client_cert "/DLKDEVAP022/certs/dlkdevap022.certificate.pem"
+  ssl_client_cert_key "/DLKDEVAP022/certs/dlkdevap022.private.pem"
+</match>
